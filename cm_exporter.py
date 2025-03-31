@@ -38,3 +38,18 @@ downstream_snr_gauge = Gauge('downstream_snr', 'Downstream SNR', ['channel', 'ma
 upstream_power_gauge = Gauge('upstream_power', 'Upstream Power', ['channel', 'mac_address'])
 upstream_frequency_gauge = Gauge('upstream_frequency', 'Upstream Frequency', ['channel', 'mac_address'])
 upstream_symbol_rate_gauge = Gauge('upstream_symbol_rate', 'Upstream Symbol Rate', ['channel', 'mac_address'])
+
+
+def scrape_and_update_metrics():
+    '''update the Prometheus metrics by scraping the modem data'''
+
+
+
+# Start Prometheus HTTP server
+start_http_server(http_server_port)
+print("Prometheus metrics server started on port:", http_server_port)
+
+# Main loop to periodically scrape data and update metrics
+while True:
+    scrape_and_update_metrics()
+    time.sleep(scrape_interval)
