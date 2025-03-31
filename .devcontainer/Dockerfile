@@ -16,8 +16,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get purge -y imagemagick imagemagick-6-common \
     && python3 -m pip install --upgrade \
+    pip \
     setuptools==75.6.0 \
     gitpython==3.1.41
+
 
 COPY requirements.txt /tmp/pip-tmp/
 COPY requirements-dev.txt /tmp/pip-tmp/
